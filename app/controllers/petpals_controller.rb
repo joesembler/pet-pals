@@ -24,7 +24,7 @@ class PetpalsController < ApplicationController
     end
 
     def destroy
-        petpal = Activity.find(petpal[:id])
+        petpal =Petpal.find(params[:id])
         petpal.destroy
         render json: {}
 
@@ -37,6 +37,6 @@ class PetpalsController < ApplicationController
 
     private
     def petpal_params
-        params.permit(:name, :species_id, :color)
+        params.permit(:name, :species_id, :user_id, :health, :happiness, :color)
     end
 end

@@ -18,9 +18,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({});
  
-  const [formData, setFormData] = useState({})
-  var userId = 0
-
   useEffect(() => { 
     fetch("/authorized_user")
     .then((res) => {
@@ -29,7 +26,6 @@ function App() {
         .then((user) => {
           setIsAuthenticated(true);
           setUser(user);
-          userId = user.id
           console.log(user)
         });
       }
@@ -39,18 +35,9 @@ function App() {
     .then(setPetPals);
 
   },[]);
-  useEffect(() => {
-      const form = {
-          name: formData.name,
-          species_id: formData.species_id,
-          user_id: user.id,
-          health: "10",
-          happiness: "10",
-          color: formData.color
-      }
-      // handlePost(form)
-   },[formData])
+  
   console.log(user)
+  
   function handlePost(obj){
       fetch('/petpals',{
         method:'POST',
@@ -71,8 +58,10 @@ function App() {
 
   return (
     <div id="App">
+      <Navbar setUser={setUser} />
       <Routes>
-    <Route exact path="/" element={<Navbar setUser={setUser} />, <CreatePetForm handlePost={handlePost} userId = {userId} errors={errors} setFormData={setFormData}/>}>
+
+    <Route exact path="/" element={<CreatePetForm handlePost={handlePost} errors={errors}/>}>
     </Route>
     <Route exact path="/petpals/:id" element={<PetPal />}>  
     </Route>

@@ -1,23 +1,39 @@
 
 import {useState, useEffect} from 'react'
 
-function CreatePetForm(handlePost, errors, setFormData, userId) {
+function CreatePetForm({handlePost, errors}) {
 
     const [speciesArray, setSpeciesArray] = useState([])
-    console.log(userId)
     const [name, setName] = useState('')
     const [speciesSelected, setSpeciesSelected] = useState(1)
     const [img, setImg] = useState('app/assets/images/cat-clipart.svg')
     const [color, setColor] = useState('')
+    const [userId, setUserId] = useState(0)
+
+    useEffect(() => { 
+        fetch("/authorized_user")
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+            .then((user) => {
+              setUserId(user.id)
+            });
+          }
+        });
+      },[]);
 
     function onSubmit(e){
         e.preventDefault()
         const petPal = {
           name: name,
           species_id: speciesSelected,
+          user_id: userId,
+          health: "10",
+          happiness: "10",
           color: color,
         }       
-        setFormData(petPal)
+        console.log(petPal)
+        handlePost(petPal)
       }
 
 
@@ -32,8 +48,8 @@ function CreatePetForm(handlePost, errors, setFormData, userId) {
 
     return (
         <div className='CreatePetForm'>
-            
-         <img src = '/app/assets/images/cat-clipart.svg'/>
+             {errors?errors.map(e => <div>{e}</div>):null}
+         <img src = 'app/assets/images/cat-clipart.svg'/>
             <form onSubmit={onSubmit}>
         <label>
           Name
@@ -64,7 +80,7 @@ function CreatePetForm(handlePost, errors, setFormData, userId) {
             </select>
         </label>
        
-        <input type="submit" value="Create PetPal!" />
+        <input type="submit" value="Create PetPal!"/>
       </form>
         </div>
     )

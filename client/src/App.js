@@ -60,8 +60,8 @@ function App() {
     <div id="App">
       <Navbar setUser={setUser} />
       <Routes>
-
-    <Route exact path="/" element={<CreatePetForm handlePost={handlePost} errors={errors}/>}>
+      
+    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList/>}>
     </Route>
     <Route exact path="/petpals/:id" element={<PetPal />}>  
     </Route>

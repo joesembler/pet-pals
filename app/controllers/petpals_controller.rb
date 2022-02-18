@@ -1,4 +1,5 @@
 class PetpalsController < ApplicationController
+    before_action :authorize_user, only: [:create]
 
     def index
         petpals = Petpal.all

@@ -1,8 +1,8 @@
-function Navbar({ onLogout }) {
+function Navbar({ setUser }) {
     function handleLogout() {
       fetch("/logout", {
         method: "DELETE",
-      }).then(() => onLogout(null));
+      }).then(() => setUser(null));
     }
   
     return (

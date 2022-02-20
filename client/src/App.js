@@ -30,9 +30,16 @@ function App() {
         });
       }
     });
+    fetch('/species')
+    .then(res => res.json())
+    .then(setSpecies);
+    
+    
     fetch('/petpals')
     .then(res => res.json())
     .then(setPetPals);
+
+    
 
   },[]);
   
@@ -61,9 +68,11 @@ function App() {
       <Navbar setUser={setUser} />
       <Routes>
       
-    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList/>}>
+    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>, <CreatePetForm handlePost={handlePost} errors={errors}/>}>
     </Route>
     <Route exact path="/petpals/:id" element={<PetPal />}>  
+    </Route>
+    <Route exact path="/create" element={<CreatePetForm handlePost={handlePost} errors={errors}/>}>  
     </Route>
     <Route exact path="/sign_up" element={<Auth />}>
       

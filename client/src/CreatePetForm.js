@@ -49,7 +49,11 @@ function CreatePetForm({handlePost, errors}) {
     return (
         <div className='CreatePetForm'>
              {errors?errors.map(e => <div>{e}</div>):null}
-         <img src = 'app/assets/images/cat-clipart.svg'/>
+
+         
+            <img src= {require('./images/cat-red.jpg')} />
+
+
             <form onSubmit={onSubmit}>
         <label>
           Name

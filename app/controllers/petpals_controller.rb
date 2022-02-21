@@ -47,6 +47,6 @@ class PetpalsController < ApplicationController
 
     private
     def petpal_params
-        params.permit(:name, :species_id, :user_id, :health, :happiness, :color)
+        params.permit(:name, :species_id, :user_id, :health, :happiness, :color, :id)
     end
 end

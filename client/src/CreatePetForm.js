@@ -1,5 +1,5 @@
-
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 
 function CreatePetForm({handlePost, errors}) {
 
@@ -47,6 +47,11 @@ function CreatePetForm({handlePost, errors}) {
      
     return (
         <div className='CreatePetForm'>
+          <div className="BackButton">
+                <Link to={"/"}>
+                    <button>Back</button>
+                </Link>
+          </div>
              {errors?errors.map(e => <div>{e}</div>):null}
 
          

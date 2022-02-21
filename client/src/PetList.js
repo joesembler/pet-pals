@@ -18,8 +18,15 @@ function PetList(props) {
 
         return(
         <div className="PetList">
-            {petPalElements}
-        </div>
+            <div className="PetListElements">
+                {petPalElements}
+            </div>
+            <div className="CreateButton">
+                <Link to={"/create"}>
+                    <button>Create A PetPal</button>
+                </Link>
+            </div>
+        </div> 
     );
     }
     else{

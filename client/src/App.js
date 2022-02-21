@@ -43,8 +43,6 @@ function App() {
 
   },[]);
   
-  console.log(user)
-  
   function handlePost(obj){
       fetch('/petpals',{
         method:'POST',
@@ -61,6 +59,8 @@ function App() {
       })
   }
 
+  // console.log("petpals:", petPals,"species", species,"errors:", errors,"user", user)
+
   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>;
 
   return (
@@ -68,7 +68,7 @@ function App() {
       <Navbar setUser={setUser} />
       <Routes>
       
-    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>}>
+    <Route exact path="/" element={petPals.length === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>}>
     </Route>
     <Route exact path="/petpals/:id" element={<PetPal petPals={petPals} species={species}/>}>  
     </Route>

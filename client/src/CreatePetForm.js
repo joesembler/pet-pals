@@ -6,8 +6,7 @@ function CreatePetForm({handlePost, errors}) {
     const [speciesArray, setSpeciesArray] = useState([])
     const [name, setName] = useState('')
     const [speciesSelected, setSpeciesSelected] = useState(1)
-    const [img, setImg] = useState('app/assets/images/cat-clipart.svg')
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState('black')
     const [userId, setUserId] = useState(0)
 
     useEffect(() => { 
@@ -45,13 +44,13 @@ function CreatePetForm({handlePost, errors}) {
         })
     }, [])
 
-
+     
     return (
         <div className='CreatePetForm'>
              {errors?errors.map(e => <div>{e}</div>):null}
 
          
-            <img src= {require('./images/cat-red.jpg')} />
+            <img src={`../images/${color + speciesSelected}.jpg`}/>
 
 
             <form onSubmit={onSubmit}>

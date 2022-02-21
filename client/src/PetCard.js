@@ -5,6 +5,7 @@ function PetCard(props) {
     console.log(props)
     return(
         <div className="Player">
+            
             <Link to={`/petpals/${props.petPal.id}`}>
             <svg height="150" width="350">
             

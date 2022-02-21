@@ -2,7 +2,7 @@ class PetpalsController < ApplicationController
     before_action :authorize_user, only: [:create]
 
     def index
-        petpals = Petpal.all
+        petpals = current_user.petpals
         render json: petpals
     end
 
@@ -22,6 +22,16 @@ class PetpalsController < ApplicationController
           render json: { errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
 
     end
+
+    def update
+        petpal = Petpal.find_by(id: params[:id])
+        if petpal
+         petpal.update(petpal_params)
+          render json: petpal
+        else
+          render json: { error: "Petpal not found" }, status: :not_found
+        end
+      end
 
     def destroy
         petpal =Petpal.find(params[:id])

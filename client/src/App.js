@@ -68,9 +68,9 @@ function App() {
       <Navbar setUser={setUser} />
       <Routes>
       
-    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>, <CreatePetForm handlePost={handlePost} errors={errors}/>}>
+    <Route exact path="/" element={petPals === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>}>
     </Route>
-    <Route exact path="/petpals/:id" element={<PetPal />}>  
+    <Route exact path="/petpals/:id" element={<PetPal petPals={petPals} species={species}/>}>  
     </Route>
     <Route exact path="/create" element={<CreatePetForm handlePost={handlePost} errors={errors}/>}>  
     </Route>

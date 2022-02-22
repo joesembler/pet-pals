@@ -6,7 +6,7 @@ function PetCard(props) {
     return(
         <div className="PetCard">
             
-            <Link to={`/petpals/${props.petPal.id - 3}`}>
+            <Link to={`/petpals/${props.petPal.id}`}>
             <svg height="150" width="350">
             
                 <rect width="1080" height="1080" fill="#84ceeb" />

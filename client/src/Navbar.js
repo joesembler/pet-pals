@@ -1,4 +1,6 @@
-function Navbar({ setUser }) {
+import { useReducer } from "react";
+
+function Navbar({ user, setUser }) {
     function handleLogout() {
       fetch("/logout", {
         method: "DELETE",
@@ -7,7 +9,10 @@ function Navbar({ setUser }) {
   
     return (
       <div className="Navbar">
-        <button onClick={handleLogout}>Logout</button>
+        <div className="helloUser">
+          Hello, {user.username}
+        </div>
+        <button id="logOutButton" onClick={handleLogout}>Logout</button>
       </div>
     );
 }

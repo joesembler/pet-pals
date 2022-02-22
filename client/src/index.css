@@ -48,17 +48,26 @@ body{
   padding: .5vw;
 }
 
+
+
 .signUp{
   display: block;
   margin-top: 20vh;
   font-size: large;
 }
 
-
-#logOutButton{
+.Navbar{
   display: inline-block;
-  margin-right: 15vw;
-  margin-left: auto;
+  margin-left: 5vw;
+}
+.helloUser{
+  font-size: xx-large;
+  display: inline-block;
+}
+#logOutButton{
+  position: relative;
+
+  margin-left: 70vw;
   margin-top: 2vh;
   margin-bottom: 2vh;
   font-family: 'Fira Sans', sans-serif;
@@ -71,7 +80,7 @@ body{
 }
 
 #logOutButton:hover{
-  color: #501b1d;
+  color: whitesmoke;
   cursor: pointer;
 }
 
@@ -90,5 +99,54 @@ body{
 .PetList{
   background-color: #8860d0;
   height: 50vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 8vh;
 }
 
+.PetCard{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 3vw;
+}
+
+
+#previewImage{
+  display: inline-block;
+  margin-left: 15vw;
+  height: 60vh;
+}
+
+.CreateButton button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  font-size: x-large;
+  border: transparent;
+  padding-top: 5vh;
+  text-decoration: none;
+}
+
+.CreateButton button:hover{
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.BackButton button{
+  position: relative;
+  top: -1vh;
+  background-color: transparent;
+  border: none;
+  font-size: large;
+}
+
+.BackButton button:hover{
+  color: whitesmoke;
+}
+
+#petPalImage{
+  height: 40vh;
+  margin-left: 25vw;
+}

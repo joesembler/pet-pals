@@ -119,7 +119,7 @@ function PetPal({petPals, species}) {
     if(petPal){
         return (
             <div className='PetPal'>
-                <div className="backButton">
+                <div className="BackButton">
                     <Link to={"/"}> 
                         <button>Back</button>
                     </Link>
@@ -127,6 +127,7 @@ function PetPal({petPals, species}) {
                 <div className='PetPalName'>
                     <h1>{petPal.name}</h1>
                 </div>
+                <img id="petPalImage"src={`../images/${petPal.color + petPal.species_id}.PNG`}/>
                 <div className='PetPalHealth'>
                     <h2>Health: {petPal.health >=0 ? petPal.health : null}</h2>
                     <h2>Happiness: {petPal.happiness }</h2>

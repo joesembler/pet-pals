@@ -18,12 +18,17 @@ function PetList(props) {
 
         return(
         <div className="PetList">
+            <div className="BackButton">
+                <Link to={"/"}>
+                    <button>Back</button>
+                </Link>
+          </div>
             <div className="PetListElements">
                 {petPalElements}
             </div>
             <div className="CreateButton">
                 <Link to={"/create"}>
-                    <button>Create A PetPal</button>
+                    <button>+ Create A PetPal</button>
                 </Link>
             </div>
         </div> 
@@ -39,8 +44,3 @@ function PetList(props) {
 }
 
 export default PetList;
-
-
-
-
-<Link id="CreatePetForm" to='/create'><button id="CreatePetForm">Create a PetPal</button></Link>

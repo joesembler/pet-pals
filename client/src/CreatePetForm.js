@@ -55,7 +55,7 @@ function CreatePetForm({handlePost, errors}) {
              {errors?errors.map(e => <div>{e}</div>):null}
 
          
-            <img src={`../images/${color + speciesSelected}.PNG`}/>
+            <img id="previewImage"src={`../images/${color + speciesSelected}.PNG`}/>
 
 
             <form onSubmit={onSubmit}>

@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div id="App">
-      <Navbar setUser={setUser} />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
       
     <Route exact path="/" element={petPals.length === 0 ? <CreatePetForm handlePost={handlePost} errors={errors}/> : <PetList petPals={petPals} species={species}/>}>

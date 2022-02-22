@@ -55,7 +55,7 @@ function CreatePetForm({handlePost, errors}) {
              {errors?errors.map(e => <div>{e}</div>):null}
 
          
-            <img src={`../images/${color + speciesSelected}.jpg`}/>
+            <img src={`../images/${color + speciesSelected}.PNG`}/>
 
 
             <form onSubmit={onSubmit}>
@@ -78,13 +78,10 @@ function CreatePetForm({handlePost, errors}) {
             <select name='color' onClick={(e) => setColor(e.target.value)}>
                 <option value="black" onClick={(e) => setColor(e.target.value)}>Black</option>
                 <option value="white" onClick={(e) => setColor(e.target.value)}>White</option>
-                <option value="grey" onClick={(e) => setColor(e.target.value)}>Grey</option>
                 <option value="red" onClick={(e) => setColor(e.target.value)}>Red</option>
                 <option value="orange" onClick={(e) => setColor(e.target.value)}>Orange</option>
-                <option value="yellow" onClick={(e) => setColor(e.target.value)}>Yellow</option>
                 <option value="green" onClick={(e) => setColor(e.target.value)}>Green</option>
                 <option value="blue" onClick={(e) => setColor(e.target.value)}>Blue</option>
-                <option value="purple" onClick={(e) => setColor(e.target.value)}>Purple</option>
             </select>
         </label>
        

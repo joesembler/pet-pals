@@ -11,3 +11,84 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&family=Shadows+Into+Light&display=swap');
+
+*{
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body{
+  background-color: #5680e9;
+  padding: 0;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.login{
+  text-align: center;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.login header{
+  font-size: xx-large;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding-top: 10vh;
+}
+
+.loginForm{
+  margin-top: 10vh;
+  font-size: large;
+}
+
+.loginForm{
+  padding: .5vw;
+}
+
+.signUp{
+  display: block;
+  margin-top: 20vh;
+  font-size: large;
+}
+
+
+#logOutButton{
+  display: inline-block;
+  margin-right: 15vw;
+  margin-left: auto;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-family: 'Fira Sans', sans-serif;
+
+  font-size: x-large;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  background-color: transparent;
+  border: none;
+}
+
+#logOutButton:hover{
+  color: #501b1d;
+  cursor: pointer;
+}
+
+.Navbar label{
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  margin-right: 15vw;
+  font-size: xx-large;
+  color: #141414;
+  padding: .75vw;
+  font-family: 'Fira Sans', sans-serif;
+
+}
+
+.PetList{
+  background-color: #8860d0;
+  height: 50vh;
+}
+

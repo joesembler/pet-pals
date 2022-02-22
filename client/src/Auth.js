@@ -33,7 +33,7 @@ function Auth({setUser, setIsAuthenticated}) {
         })
     }
     return (
-        <> 
+        <div className="SignUp"> 
         <h1>Sign UP</h1>
         <form onSubmit={onSubmit}>
         <label>
@@ -50,7 +50,7 @@ function Auth({setUser, setIsAuthenticated}) {
         <input type="submit" value="Sign up!" />
       </form>
       {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
-        </>
+        </div>
     )
 }
 

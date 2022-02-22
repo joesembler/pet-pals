@@ -1,64 +1,85 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams } from "react-router"
 import { Link } from 'react-router-dom'
 
 function PetPal({petPals, species}) {
 
     const params = useParams()
-
     const [petPal, setPetPal] = useState({})
+    const counterRef = useRef(petPal)
 
+    // const [healthState, setHealthState] = useState(petPal.health)
 
-    
-    const [happinessState, setHappinessState] = useState(10)
-    const [healthState, setHealthState] = useState(10)
-
+   // let happinessVar = 10;
+    //let healthVar = 10;
     useEffect(() => {
         setPetPal(petPals[params.id - 1])
-    }, [petPals, params])
+        //setCounter(1)
+    }, [])
+    useEffect(() => {
+        counterRef.current = petPal;
+      }, [petPal])
+    //const [happinessState, setHappinessState] = useState(petPal.happiness)
+   // console.log(happinessState)
+    // useEffect(() => {
+    //     setHealthState(petPal.health)
+    //     setHappinessState(petPal.happiness)
+    // }, [])
 
     useEffect(() => {
-        setHealthState(petPal.health)
-        setHappinessState(petPal.happiness)
-    }, [petPal])
+        const interval = setInterval(() => {
+            let current = counterRef.current
+            let happinessVar = current.happiness -1
+            fetch(`/petpals/${params.id}`,
+            {
+                method:'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body:JSON.stringify({happiness: happinessVar})
+              })
+              .then(res => res.json())
+              .then(data => {
+                 setPetPal(data)
+              })
+        return () => clearInterval(interval);
+        }, 4000);
+    }, [counterRef]);
+      
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let current = counterRef.current
+            let healthVar = current.health -1
+            fetch(`/petpals/${params.id}`,
+            {
+                method:'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body:JSON.stringify({health: healthVar})
+              })
+              .then(res => res.json())
+              .then(data => {
+                 setPetPal(data)
+              })
+        return () => clearInterval(interval);
+        }, 6000);
+    }, [counterRef]);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //      // console.log('This will run every second!');
-    //     if(healthState > 0){
-    //         var hp = healthState -1
-    //         handleUpdate({ 
-    //         health: hp
-    //      })
-    //      setHealthState(healthState -1)
-    //     }
-    //     if(happinessState > 0){
-    //         var hp = happinessState-1
-    //         handleUpdate({
-    //             happiness: hp
-    //          })
-    //         setHappinessState(happinessState - 1)
-    //     }
-    //     }, 1000);
-        
-        
-    //   }, []);
 
 
-
-    function handleUpdate(obj){
-        fetch(`/petpals/${params.id}`,{
-          method:'PATCH',
-          headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify(obj)
-        })
-        .then(res => res.json())
-        .then(data => {
-            setPetPal(data)
-        })
-    }
+    // function handleUpdate(obj){
+    //     fetch(`/petpals/${params.id}`,{
+    //       method:'PATCH',
+    //       headers: {'Content-Type': 'application/json'},
+    //       body:JSON.stringify(obj)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setPetPal(data)
+    //         console.log(obj)
+    //         console.log(data)
+    //     })
+    // }
 
     function handleUpdateHappiness(){
+      //  happinessVar = 10
         const fullHappiness = {
             happiness: 10
         }
@@ -68,11 +89,14 @@ function PetPal({petPals, species}) {
           body:JSON.stringify(fullHappiness)
         })
         .then(res => res.json())
-        
-        setHappinessState(10)
+        .then(data => {
+            setPetPal(data)
+        })
+       
     }
 
     function handleUpdateHealth(){
+      //  healthVar = 10
         const fullHealth= {
             health: 10
         }
@@ -82,13 +106,15 @@ function PetPal({petPals, species}) {
           body:JSON.stringify(fullHealth)
         })
         .then(res => res.json())
-        setHealthState(10)
+        .then(data => {
+            setPetPal(data)
+        })
     }
     
     
 
     
-    // console.log("petPals: ", petPals,"params: ", params,"petPal: ", petPal, "health: ", petPal.health, "happiness: ", petPal.happiness)
+    //console.log("petPals: ", petPals,"params: ", params,"petPal: ", petPal, "health: ", healthVar, "happiness: ", happinessVar)
 
     if(petPal){
         return (
@@ -102,8 +128,8 @@ function PetPal({petPals, species}) {
                     <h1>{petPal.name}</h1>
                 </div>
                 <div className='PetPalHealth'>
-                    <h2>Health: {petPal.health}</h2>
-                    <h2>Happiness: {petPal.happiness}</h2>
+                    <h2>Health: {petPal.health >=0 ? petPal.health : null}</h2>
+                    <h2>Happiness: {petPal.happiness }</h2>
                 </div>
                 <div className="PetPalFeedButton">
                     <button onClick={handleUpdateHealth}>Feed</button>

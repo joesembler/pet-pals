@@ -6,9 +6,9 @@ function Navbar({ setUser }) {
     }
   
     return (
-      <header>
+      <div className="Navbar">
         <button onClick={handleLogout}>Logout</button>
-      </header>
+      </div>
     );
 }
 
